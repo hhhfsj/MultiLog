@@ -1,6 +1,9 @@
 package me.i509.multilog.math;
 
-public class BlockPosition3D {
+import me.i509.multilog.common.data.selector.area.SelectorType;
+
+public class BlockPosition3D implements SelectorType {
+	public static final BlockPosition3D ZERO = new BlockPosition3D(0,0,0);
 	private int x;
 	private int y;
 	private int z;

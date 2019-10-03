@@ -4,6 +4,7 @@ import java.lang.ref.WeakReference;
 
 import com.mojang.datafixers.DataFixer;
 
+import me.i509.multilog.nbt.MCompound;
 import me.i509.multilog.threaded.ThreadedLoggerAccess;
 
 public abstract class MultiLogPlatform {
@@ -38,4 +39,6 @@ public abstract class MultiLogPlatform {
 	public ThreadedLoggerAccess getThread() {
 		return this.thread;
 	}
+
+	public abstract MCompound updateTag(MCompound compound);
 }

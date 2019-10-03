@@ -1,5 +1,7 @@
 package me.i509.multilog.common.data.selector;
 
-public class InventorySelector {
+import me.i509.multilog.common.data.selector.area.SelectorType;
+
+public class InventorySelector implements SelectorType {
 
 }

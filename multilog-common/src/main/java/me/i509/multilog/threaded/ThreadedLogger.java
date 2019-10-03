@@ -1,5 +1,6 @@
 package me.i509.multilog.threaded;
 
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 import me.i509.multilog.common.data.LogData;
@@ -19,6 +20,7 @@ public class ThreadedLogger extends Thread implements AutoCloseable {
 		super("MultiLog-Logger-Thread");
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
     public void run() {
 		try {
@@ -29,7 +31,9 @@ public class ThreadedLogger extends Thread implements AutoCloseable {
 					}
 					
 					for(MTask task : tasks) {
-						
+						// Write task
+						Object o = task.getType().getData(task.getSelector(), null);
+						task.getFuture().accept(CompletableFuture.completedFuture(o)); // TODO probably not thread safe
 					}
 				}
 				this.wait();
